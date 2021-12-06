@@ -3,7 +3,8 @@
         [
             "@babel/preset-env",{
                 "targets":{
-                    "node":"current"
+                    "node":"current",
+                    "chrome": "49"
                 }
         }],
         "@babel/preset-react"
