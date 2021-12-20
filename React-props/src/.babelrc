@@ -6,7 +6,7 @@
           "edge": "15",
           "safari": "10",
           "firefox": "50",
-          "chrome": "49"
+          "chrome": "74"
         }
       }],
       "@babel/preset-react"
