@@ -1,5 +1,5 @@
 const express = require('express');
-
+require('dotenv').config()
 connect();
 const app = express();
 
@@ -11,7 +11,7 @@ app.listen(3000, function () {
 
 async function connect(){
   const {MongoClient} = require('mongodb');
-  const client = new MongoClient('mongodb+srv://cs628:qeg-fdc0pdq*MFM0khp@cluster0.swxaj.mongodb.net/sample_airbnb');
+  const client = new MongoClient('mongodb+srv://'+process.env.MONGODB_ACCOUNT+':'+process.env.MONGODB_PASSWORD+'@cluster0.swxaj.mongodb.net/sample_airbnb');
   await client.connect();  
   console.log("Connected to CS628 database");
   const db = client.db();
