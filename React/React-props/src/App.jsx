@@ -16,8 +16,6 @@ class Buttonadd extends React.Component{
             <button onClick={this.handleAdd}>Click me</button>
             </>
         )
-        
-        
     }
 }
 const list = [1,2,3,4]
