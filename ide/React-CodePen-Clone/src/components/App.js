@@ -7,7 +7,7 @@ function App() {
   const [css, setCss] = useLocalStorage('css', '')
   const [js, setJs] = useLocalStorage('js', '')
   const [srcDoc, setSrcDoc] = useState('')
-
+  
   useEffect(() => {
     const timeout = setTimeout(() => {
       setSrcDoc(`
@@ -34,8 +34,15 @@ function App() {
 
   return (
     <>
-      <div className="banner"><h3>CS628 Online Editor</h3></div>
+    <div className="banner"><h3>CS628 Online Editor</h3></div>
+    <div className="direction">
       <div className="pane top-pane">
+        <Editor
+          language="jsx"
+          displayName="JSX"
+          value={js}
+          onChange={setJs}
+        />
         <Editor
           language="xml"
           displayName="HTML"
@@ -48,12 +55,6 @@ function App() {
           value={css}
           onChange={setCss}
         />
-        <Editor
-          language="jsx"
-          displayName="JSX"
-          value={js}
-          onChange={setJs}
-        />
       </div>
       <div className="pane">
         <iframe
@@ -61,10 +62,11 @@ function App() {
           title="output"
           sandbox="allow-scripts allow-forms allow-modals"
           frameBorder="0"
-          width="50%"
+          width="100%"
           height="100%"
         />
       </div>
+    </div>
     </>
   )
 }

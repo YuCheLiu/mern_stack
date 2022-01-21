@@ -1,14 +1,22 @@
+
 body {
   margin: 0;
 }
+.direction{
+  display: flex;
 
+}
 .top-pane {
   background-color: hsl(225, 6%, 25%);
+  width: 60%;
 }
 
 .pane {
-  height: 60vh;
-  display: flex;
+  height: 100%;
+  display: block;
+  margin: 0.5%;
+  border-radius: 5px;
+  overflow:hidden;
 }
 
 .doc{
@@ -28,6 +36,7 @@ body {
   flex-direction: column;
   padding: .5rem;
   background-color: hsl(225, 6%, 25%);
+
 }
 
 .editor-container.collapsed {
@@ -37,6 +46,7 @@ body {
 .editor-container.collapsed .CodeMirror-scroll {
   position: absolute;
   overflow: hidden !important;
+  
 }
 
 .expand-collapse-btn {

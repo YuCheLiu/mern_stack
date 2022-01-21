@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import 'codemirror/lib/codemirror.css'
-import 'codemirror/theme/material.css'
+import 'codemirror/theme/eclipse.css'
 import 'codemirror/mode/xml/xml'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/css/css'
@@ -42,8 +42,9 @@ export default function Editor(props) {
           lineWrapping: true,
           lint: true,
           mode: language,
-          theme: 'material',
-          lineNumbers: true
+          theme: 'eclipse',
+          lineNumbers: true,
+          smartIndent: true
         }}
       />
     </div>
