@@ -63,6 +63,7 @@ function App() {
           frameBorder="0"
           width="50%"
           height="100%"
+          sandbox="allow-scripts allow-forms allow-modals"
         />
       </div>
     </>
