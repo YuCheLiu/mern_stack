@@ -12,12 +12,13 @@ input[type=range]{
 input[type=range]::-webkit-slider-thumb{
   pointer-events: auto;
 }
-input:hover{
-  opacity: 1;
+input[type=range]::-webkit-slider-runnable-track{
+  background: white;
 }
+
+
 .move{
   width: 100%;
-  opacity: 0;
   z-index: 1;
   position: absolute;
 
@@ -25,12 +26,12 @@ input:hover{
 .top-pane {
   background-color: hsl(225, 6%, 25%);
   
+  
 }
 .divivdeLine{
   width: 10%;
   height: 100%;
   overflow:hidden;
-  background-color: hsl(225, 6%, 25%);
 }
 
 .pane {
@@ -39,8 +40,15 @@ input:hover{
   margin: 0.5%;
   border-radius: 5px;
   overflow:hidden;
-}
+  padding-top: 1.5%;
 
+}
+.check{
+  cursor: col-resize; height: 100%; width: 20px; margin-left: -10px; position: relative;
+}
+.who{
+  width: 1px; height: 100px; right: 5px; top: 50%; margin-top: -10px; position: absolute; border-left: 1px solid rgba(0, 0, 0, 0.1); border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
 .doc{
   background-color:black;
   width:50%;

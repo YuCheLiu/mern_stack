@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Editor from './Editor'
 import useLocalStorage from '../hooks/useLocalStorage'
 
+
 function App() {
   const [html, setHtml] = useLocalStorage('html', '')
   const [css, setCss] = useLocalStorage('css', '')
@@ -60,14 +61,12 @@ function App() {
         />
       </div>
       <input  className="move" onChange={()=>setWidth(document.getElementById('vol').value)} type="range" value={width} id="vol" name="vol" min="0" max="100"></input>
-    
       <div className="pane">
         <iframe
           srcDoc={srcDoc}
           title="output"
           sandbox="allow-scripts allow-forms allow-modals"
           frameBorder="0"
-          width="100%"
           height="100%"
         />
       </div>
