@@ -7,6 +7,7 @@ function App() {
   const [css, setCss] = useLocalStorage('css', '')
   const [js, setJs] = useLocalStorage('js', '')
   const [srcDoc, setSrcDoc] = useState('')
+  const [width, setWidth] = useState(60) 
   
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -31,12 +32,14 @@ function App() {
 
     return () => clearTimeout(timeout)
   }, [html, css, js])
-
+  
   return (
     <>
-    <div className="banner"><h3>CS628 Online Editor</h3></div>
+    <style>{'.top-pane{width:'+width+'%;}'}</style>
+    <div className="banner"><h3>CS628 Online Editor</h3> </div>
+    
     <div className="direction">
-      <div className="pane top-pane">
+      <div className="pane top-pane" >
         <Editor
           language="jsx"
           displayName="JSX"
@@ -56,6 +59,8 @@ function App() {
           onChange={setCss}
         />
       </div>
+      <input  className="move" onChange={()=>setWidth(document.getElementById('vol').value)} type="range" value={width} id="vol" name="vol" min="0" max="100"></input>
+    
       <div className="pane">
         <iframe
           srcDoc={srcDoc}

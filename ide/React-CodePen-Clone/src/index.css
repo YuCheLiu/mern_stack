@@ -6,9 +6,31 @@ body {
   display: flex;
 
 }
+input[type=range]{
+  pointer-events: none;
+}
+input[type=range]::-webkit-slider-thumb{
+  pointer-events: auto;
+}
+input:hover{
+  opacity: 1;
+}
+.move{
+  width: 100%;
+  opacity: 0;
+  z-index: 1;
+  position: absolute;
+
+}
 .top-pane {
   background-color: hsl(225, 6%, 25%);
-  width: 60%;
+  
+}
+.divivdeLine{
+  width: 10%;
+  height: 100%;
+  overflow:hidden;
+  background-color: hsl(225, 6%, 25%);
 }
 
 .pane {
