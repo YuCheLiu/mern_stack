@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import 'codemirror/lib/codemirror.css'
+import 'codemirror/addon/hint/show-hint.css'
 import 'codemirror/theme/eclipse.css'
 import 'codemirror/mode/xml/xml'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/mode/css/css'
 import 'codemirror/mode/jsx/jsx'
+import 'codemirror/addon/hint/html-hint.js'
 import { Controlled as ControlledEditor } from 'react-codemirror2'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCompressAlt, faExpandAlt } from '@fortawesome/free-solid-svg-icons'
+import { faCompressAlt, faExpandAlt, faFileCode } from '@fortawesome/free-solid-svg-icons'
 
 export default function Editor(props) {
   const {
@@ -25,6 +27,7 @@ export default function Editor(props) {
   return (
     <div className={`editor-container ${open ? '' : 'collapsed'}`}>
       <div className="editor-title">
+        <FontAwesomeIcon icon={faFileCode} />
         {displayName}
         <button
           type="button"
@@ -44,7 +47,10 @@ export default function Editor(props) {
           mode: language,
           theme: 'eclipse',
           lineNumbers: true,
-          smartIndent: true
+          smartIndent: true,
+          matchBrackets: true,
+          extraKeys: { "Ctrl-Space": "autocomplete" },
+          showHint:true
         }}
       />
     </div>
