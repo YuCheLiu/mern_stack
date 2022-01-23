@@ -3,7 +3,7 @@ import Editor from './Editor'
 import useLocalStorage from '../hooks/useLocalStorage'
 
 
-function App() {
+function App(props) {
   const [html, setHtml] = useLocalStorage('html', '')
   const [css, setCss] = useLocalStorage('css', '')
   const [js, setJs] = useLocalStorage('js', '')
@@ -67,6 +67,7 @@ function App() {
           title="output"
           sandbox="allow-scripts allow-forms allow-modals"
           frameBorder="0"
+          width="100%"
           height="100%"
         />
       </div>

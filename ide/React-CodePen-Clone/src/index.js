@@ -5,7 +5,7 @@ import App from './components/App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App aa="<h1>Template</h1>"/>
   </React.StrictMode>,
   document.getElementById('root')
 );
