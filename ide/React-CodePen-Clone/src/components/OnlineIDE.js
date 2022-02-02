@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Editor from './Editor'
 import useLocalStorage from '../hooks/useLocalStorage'
-
-
-function App(props) {
+function OnlineIDE(props) {
   const [html, setHtml] = useLocalStorage('html', '')
   const [css, setCss] = useLocalStorage('css', '')
   const [js, setJs] = useLocalStorage('js', '')
@@ -11,6 +9,8 @@ function App(props) {
   const [width, setWidth] = useState(60) 
   
   useEffect(() => {
+    // setHtml(props.html)
+    console.log("useEffect",props.temple)
     const timeout = setTimeout(() => {
       setSrcDoc(`
         <html>
@@ -34,11 +34,25 @@ function App(props) {
     return () => clearTimeout(timeout)
   }, [html, css, js])
   
+  // const modulelist = [
+  //   {title: "First Component", html: "<h1>Hello</h1>", css:``, javascript:``},
+  //   {title: "Second Component",html: `<h1>Second</h1>`, css:``, javascript:``}
+  // ]
+  // function handleClick(mod){
+  //   setHtml(mod.html)
+  // }
+  // const mod = modulelist.map( mod => 
+  //   <>
+  //       <button key={mod.title} onClick={() => handleClick(mod)}>{mod.title}</button>
+  //   </>
+    
+  // )
+
   return (
     <>
     <style>{'.top-pane{width:'+width+'%;}'}</style>
     <div className="banner"><h3>CS628 Online Editor</h3> </div>
-    
+    {/* <button >refresh</button> */}
     <div className="direction">
       <div className="pane top-pane" >
         <Editor
@@ -76,4 +90,5 @@ function App(props) {
   )
 }
 
-export default App;
+
+export default OnlineIDE;

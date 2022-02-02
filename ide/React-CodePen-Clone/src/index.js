@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
+import ModuleList from './components/ModuleList';
+import OnlineIDE from './components/OnlineIDE';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App aa="<h1>Template</h1>"/>
+    <OnlineIDE />
   </React.StrictMode>,
   document.getElementById('root')
 );

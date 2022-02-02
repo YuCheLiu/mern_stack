@@ -46,7 +46,6 @@ async function findAggreate(db){
         'accommodates':1
       }
     }
-
   ]
   const cursor = await db.collection('listingsAndReviews').aggregate(pipeline).toArray();
   cursor.map( (list) => {console.log(list)})
