@@ -1,0 +1,6 @@
+type Query {
+    books: String
+}
+type Mutation {
+    changeBooks(bookname:String):String
+}
