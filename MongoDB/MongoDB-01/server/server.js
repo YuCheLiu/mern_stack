@@ -3,12 +3,12 @@ require('dotenv').config()
 connect();
 
 const app = express();
-
+var list =[];
 app.use(express.static('public'));
 
-app.listen(3000, function () {
-  console.log('App started on port 3000');
-});
+// app.listen(3000, function () {
+//   console.log('App started on port 3000');
+// });
 
 // async function test(){
 //   await console.log("Hello this is me");
@@ -57,13 +57,18 @@ async function connect(){
 
 async function find(db){
   const query = {
-    price: {$lt : 10}
+    price: {$lt : 50}
   }
   const cursor = await db.collection('listingsAndReviews').find(query);
   
-  let result = await cursor.map((list)=>list.name)
-  result.forEach(item => console.log(item));
+  // list = await cursor.map((item)=>list.name)
+  cursor.forEach(item => {
+    list.push({'name': item.name});
+    console.log(list)
+  });
 }
+
+
 
 async function findOne(db){
   const cursor = await db.collection('listingsAndReviews').findOne({price: {$gt :1000}});
@@ -89,3 +94,22 @@ async function findAggreate(db){
   const cursor = await db.collection('listingsAndReviews').aggregate(pipeline).toArray();
   cursor.map( (list) => {console.log(list)})
 }
+
+const { ApolloServer, gql } = require('apollo-server');
+const typeDefs = gql`
+type Hotel {
+  name: String
+}
+type Query {
+  hotels: [Hotel]
+}`;
+const resolvers = {
+  Query: {
+    hotels: () => list,
+  },
+};
+const server = new ApolloServer({ typeDefs, resolvers });
+
+server.listen().then(({ url }) => {
+    console.log(`🚀  Server ready at ${url}`);
+  });
