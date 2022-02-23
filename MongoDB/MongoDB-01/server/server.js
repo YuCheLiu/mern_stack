@@ -47,7 +47,9 @@ app.use(express.static('public'));
 
 async function connect(){
   const {MongoClient} = require('mongodb');
-  const client = new MongoClient('mongodb+srv://'+process.env.MONGODB_ACCOUNT+':'+process.env.MONGODB_PASSWORD+'@cluster0.swxaj.mongodb.net/sample_airbnb');
+  // const client = new MongoClient('mongodb+srv://'+process.env.MONGODB_ACCOUNT+':'+process.env.MONGODB_PASSWORD+'@cluster0.swxaj.mongodb.net/sample_airbnb');
+  const client = new MongoClient('mongodb+srv://student_access:cityucs628@cluster0.swxaj.mongodb.net/sample_restaurants');
+  
   await client.connect();
   console.log("Connected to CS628 database");
   const db = client.db();
@@ -67,8 +69,18 @@ async function find(db){
     console.log(list)
   });
 }
-
-
+async function loadData() {
+  const response =  await fetch('http://localhost:8000/graphql', {
+     method:'POST',
+     headers:{'content-type':'application/json'},
+     body:JSON.stringify({query:'{resturant}'})
+  })
+  const rsponseBody =  await response.json();
+  return rsponseBody.data.greeting;
+}
+showData() {
+  loadData().then(result => this.setState({greetingMessage:result}))
+}
 
 async function findOne(db){
   const cursor = await db.collection('listingsAndReviews').findOne({price: {$gt :1000}});

@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "babel src --out-dir public",
     "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
