@@ -44,11 +44,11 @@ app.use(express.static('public'));
 //     console.log("3. error");
 //   });
 
+const client = new MongoClient('mongodb+srv://student_access:cityucs628@cluster0.swxaj.mongodb.net/sample_restaurants');
 
 async function connect(){
   const {MongoClient} = require('mongodb');
-  // const client = new MongoClient('mongodb+srv://'+process.env.MONGODB_ACCOUNT+':'+process.env.MONGODB_PASSWORD+'@cluster0.swxaj.mongodb.net/sample_airbnb');
-  const client = new MongoClient('mongodb+srv://student_access:cityucs628@cluster0.swxaj.mongodb.net/sample_restaurants');
+  const client = new MongoClient('mongodb+srv://'+process.env.MONGODB_ACCOUNT+':'+process.env.MONGODB_PASSWORD+'@cluster0.swxaj.mongodb.net/sample_airbnb');
   
   await client.connect();
   console.log("Connected to CS628 database");
@@ -78,9 +78,9 @@ async function loadData() {
   const rsponseBody =  await response.json();
   return rsponseBody.data.greeting;
 }
-showData() {
-  loadData().then(result => this.setState({greetingMessage:result}))
-}
+// showData() {
+//   loadData().then(result => this.setState({greetingMessage:result}))
+// }
 
 async function findOne(db){
   const cursor = await db.collection('listingsAndReviews').findOne({price: {$gt :1000}});

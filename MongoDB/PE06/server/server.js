@@ -13,25 +13,21 @@ async function connect(){
 }
 
 async function find(db){
-  const query = {
-    //complete your query code here
-  }
-  const cursor = await db.collection('restaurants').find(query);
-  
+  const cursor = await db.collection('restaurants').find();
+  count =0
   cursor.forEach(item => {
+    if(count == 20)break;
     list.push({
-      //save key value pair into array for query.
-      //complete your code here.
+      name: item.name
     });
+    count++;
   });
 }
 
 const { ApolloServer, gql } = require('apollo-server');
 const typeDefs = gql`
 type Restaurant {
-  name: String,
-  cuisine: String,
-  borough: String
+  name: String
 }
 type Query {
   restaurants: [Restaurant]
