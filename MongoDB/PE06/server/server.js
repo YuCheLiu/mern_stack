@@ -4,7 +4,6 @@ var list =[];
 async function connect(){
   const {MongoClient} = require('mongodb');
   const client = new MongoClient('mongodb+srv://student_access:cityucs628@cluster0.swxaj.mongodb.net/sample_restaurants');
-  
   await client.connect();
   console.log("Connected to CS628 database");
   const db = client.db();

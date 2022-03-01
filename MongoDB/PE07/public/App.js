@@ -41,13 +41,19 @@ function _loadData() {
           case 0:
             _context.next = 2;
             return fetch('http://localhost:4000', {
-              method: 'POST',
+              method: 'POST'
+              /*select which method we should use*/
+              ,
               headers: {
                 'content-type': 'application/json'
-              },
+              }
+              /*select what content type we should use*/
+              ,
               body: JSON.stringify({
                 query: "query{ resturants{name}}"
               })
+              /*type your GraphQL query statement*/
+
             });
 
           case 2:
@@ -83,6 +89,7 @@ var HelloWorld = /*#__PURE__*/function (_React$Component) {
 
     _defineProperty(_assertThisInitialized(_this), "showData", function () {
       loadData().then(function (result) {
+        // update the state using setState by assign result to list key.
         _this.setState({
           list: result.resturants
         });
@@ -106,7 +113,7 @@ var HelloWorld = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           return _this2.showData();
         }
-      }, "Click me"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("th", null, "name"), /*#__PURE__*/React.createElement(Display, {
+      }, "Click me"), /*#__PURE__*/React.createElement("p", null, "Spencer (YuChe) Liu"), /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("th", null, "Resturant name:"), /*#__PURE__*/React.createElement(Display, {
         lists: this.state.list
       })));
     }
@@ -116,10 +123,10 @@ var HelloWorld = /*#__PURE__*/function (_React$Component) {
 }(React.Component);
 
 function Display(props) {
+  // use map function to create a array of <tr> tags that shows resturant's name 
   var list = props.lists.map(function (item) {
     return /*#__PURE__*/React.createElement("tr", null, item.name);
   });
-  console.log(list);
   return /*#__PURE__*/React.createElement(React.Fragment, null, list);
 }
 
